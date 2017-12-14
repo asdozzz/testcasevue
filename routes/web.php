@@ -13,7 +13,22 @@
 
 Route::get('/', function () {
 
-    $cl = new \Asdozzz\Projects\Controller\ProjectsController();
-    die("<pre>" . print_r($cl, true) . "</pre>");
+    $cl = new \Asdozzz\Projects\Business\Requirements();
+    $input = [
+        'data' => [
+            'id' => null,
+            'project_id' => 18,
+            'parent_id' => null,
+            'name' => 'asd2',
+            'description' => 'adasd',
+            'user_id' => null,
+            /*'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null*/
+        ]
+    ];
+
+    $res = $cl->model->create($input);
+    die("<pre>" . print_r($res, true) . "</pre>");
     return $content;
 });

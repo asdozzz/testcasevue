@@ -4,10 +4,10 @@ namespace Asdozzz\Projects\Essences;
 
 use DB;
 
-class ProjectUser extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
+class ProjectUserRole extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
     public $primary_key   = 'id';
-    public $table         = 'project_user';
+    public $table         = 'project_user_role';
     public $label         = 'Пользователи проекта';
     public $softDeletes   = false;
     public $deleted_field = 'deleted_at';
@@ -34,6 +34,13 @@ class ProjectUser extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
                     'required' => true
                 ]
             ),
+            'role_id' => \Columns::factory('Integer')->extend(
+                [
+                    'name' => 'Роль',
+                    'data' => 'role_id',
+                    'required' => true
+                ]
+            ),
             'user_id' => \Columns::factory('Integer')->extend(
                 [
                     'name' => 'Пользователь',
@@ -54,6 +61,7 @@ class ProjectUser extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
                 'label'   => 'Add',
                 'columns' => [
                     $columns['project_id'],
+                    $columns['role_id'],
                     $columns['user_id'],
                 ],
             ],
@@ -64,6 +72,7 @@ class ProjectUser extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
                 [
                     $columns['id'],
                     $columns['project_id'],
+                    $columns['role_id'],
                     $columns['user_id'],
                 ],
             ],
@@ -82,6 +91,7 @@ class ProjectUser extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
                 'columns'     => [
                     $columns['id'],
                     $columns['project_id'],
+                    $columns['role_id'],
                     $columns['user_id'],
                 ],
                 'order' =>

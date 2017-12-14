@@ -15,11 +15,11 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
     public function getPermissions()
     {
         return array(
-            'listing' => 'listing.'.$this->table,
-            'read'    => 'read.'.$this->table,
-            'create'  => 'create.'.$this->table,
-            'update'  => 'update.'.$this->table,
-            'delete'  => 'delete.'.$this->table
+            //'listing' => 'listing.'.$this->table,
+            //'read'    => 'read.'.$this->table,
+            //'create'  => 'create.'.$this->table,
+            //'update'  => 'update.'.$this->table,
+            //'delete'  => 'delete.'.$this->table
         );
     }
 
@@ -37,7 +37,7 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
             'parent_id' => \Columns::factory('Integer')->extend(
                 [
                     'name' => 'Родительское звено',
-                    'required' => true,
+                    //'required' => true,
                     'data' => 'parent_id',
                     'default_value' => null
                 ]
@@ -57,6 +57,20 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
                     'validation_rules' => 'alpha_num|min:3|max:5000',
                 ]
             ),
+            'level' => \Columns::factory('Integer')->extend(
+                [
+                    'name' => 'Уровень',
+                    'data' => 'level',
+                    'default_value' => 0
+                ]
+            ),
+            'priority' => \Columns::factory('Integer')->extend(
+                [
+                    'name' => 'Приоритет',
+                    'data' => 'priority',
+                    'default_value' => 0
+                ]
+            ),
             'user_id' => \Columns::factory('Integer')->extend(
                 [
                     'name' => 'Автор',
@@ -65,8 +79,8 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
                         'type' => 'function',
                         'value' => function($data)
                         {
-                            $User = \Auth::user();
-                            return $User->id;
+                            $user = \Request::user();
+                            return $user->id;
                         }
                     ]
                 ]
@@ -91,6 +105,8 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
                     $columns['name'],
                     $columns['description'],
                     $columns['user_id'],
+                    $columns['level'],
+                    $columns['priority']
                 ],
             ],
             'edit' =>
@@ -104,6 +120,8 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
                     $columns['name'],
                     $columns['description'],
                     $columns['user_id'],
+                    $columns['level'],
+                    $columns['priority']
                     /* Columns */
                 ],
             ],
@@ -126,6 +144,8 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
                     $columns['name'],
                     $columns['description'],
                     $columns['user_id'],
+                    $columns['level'],
+                    $columns['priority']
                 ],
                 'order' =>
                     [

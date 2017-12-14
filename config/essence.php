@@ -57,7 +57,8 @@ return [
 	],
 	'essences' => [
 	    'Projects' => Asdozzz\Projects\Essences\Projects::class,
-        'ProjectUser' => Asdozzz\Projects\Essences\ProjectUser::class,
+        'ProjectRoles' => Asdozzz\Projects\Essences\ProjectRoles::class,
+        'ProjectUserRole' => Asdozzz\Projects\Essences\ProjectUserRole::class,
         'Requirements' => Asdozzz\Projects\Essences\Requirements::class,
         'Plans' => Asdozzz\Projects\Essences\Plans::class
     ]

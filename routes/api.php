@@ -10,4 +10,7 @@ Route::middleware(['auth:api'])->group(function () {
     });
 
     Route::apiResource('projects', '\Asdozzz\Projects\Controller\ProjectsController');
+    Route::get('projects/{id}/requirements', '\Asdozzz\Projects\Controller\RequirementsController@index');
+    Route::apiResource('requirements', '\Asdozzz\Projects\Controller\RequirementsController');
+    Route::put('requirements/{id}/sort', '\Asdozzz\Projects\Controller\RequirementsController@sort');
 });

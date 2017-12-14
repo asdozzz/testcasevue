@@ -31,15 +31,14 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
                 [
                     'name' => 'Название',
                     'data' => 'title',
-                    'required' => true,
-                    'validation_rules' => 'alpha_num',
+                    'required' => true
                 ]
             ),
             'description' => \Columns::factory('Textarea')->extend(
                 [
                     'name' => 'Описание',
                     'data' => 'description',
-                    'validation_rules' => 'alpha_num|min:3|max:5000',
+                    'validation_rules' => 'min:3|max:5000',
                 ]
             ),
             'user_id' => \Columns::factory('Integer')->extend(
@@ -118,7 +117,8 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
     public function getRelationships()
     {
         return [
-            \Asdozzz\Essence\Relationship::factory('OneToMany',['ProjectUser','project_id']),
+            \Asdozzz\Essence\Relationship::factory('OneToMany',['ProjectRoles','project_id']),
+            \Asdozzz\Essence\Relationship::factory('OneToMany',['ProjectUserRole','project_id']),
             \Asdozzz\Essence\Relationship::factory('OneToMany',['Requirements','project_id']),
         ];
     }
