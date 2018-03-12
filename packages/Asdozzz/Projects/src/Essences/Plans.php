@@ -6,6 +6,7 @@ use DB;
 
 class Plans extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
+    public $moduleName    = 'Projects';
     public $primary_key   = 'id';
     public $table         = 'plans';
     public $label         = 'Plans';

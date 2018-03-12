@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/asdozzz/vika.git",
-                "reference": "88a3f23bf454841603b7fdbbd330a449ce787cc2"
+                "reference": "8035ec2dee0ce48476514b63501d2d63f0432917"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asdozzz/vika/zipball/88a3f23bf454841603b7fdbbd330a449ce787cc2",
-                "reference": "88a3f23bf454841603b7fdbbd330a449ce787cc2",
+                "url": "https://api.github.com/repos/asdozzz/vika/zipball/8035ec2dee0ce48476514b63501d2d63f0432917",
+                "reference": "8035ec2dee0ce48476514b63501d2d63f0432917",
                 "shasum": ""
             },
             "type": "library",
@@ -199,7 +199,7 @@
                 }
             ],
             "description": "desc",
-            "time": "2017-11-01T12:16:42+00:00"
+            "time": "2018-01-22T17:33:14+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",

@@ -4,17 +4,21 @@ namespace Asdozzz\Projects\Business;
 
 class Projects extends \Asdozzz\Universal\Business\Universal
 {
-	public $modelName = '\Asdozzz\Projects\Model\Projects';
+    public function hasProjectPermission($project_id,$mark)
+    {
+        return $this->model->hasProjectPermission($project_id,$mark);
+    }
 
     public function create($data)
     {
         $result = $this->model->create($data);
 
-        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUser();
+        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUserRole();
         $ProjectUser->create([
             'data' => [
                 'project_id' => $result['result']->id,
-                'user_id' => $result['result']->user_id
+                'user_id' => $result['result']->user_id,
+                'role_id' => $ProjectUser::AUTHOR
             ]
         ]);
 
@@ -23,9 +27,8 @@ class Projects extends \Asdozzz\Universal\Business\Universal
 
     public function getDatatable($input)
     {
-        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUser();
-
-        $list = $ProjectUser->getList('default',[
+        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUserRole();
+        $list = $ProjectUser->getList([
             'filter' => [
                 [
                     'colname' => 'user_id',
@@ -54,5 +57,10 @@ class Projects extends \Asdozzz\Universal\Business\Universal
         ];
 
         return $this->model->getDatatable($input);
+    }
+
+    public function GetUsersById($id)
+    {
+        return $this->model->GetUsersById($id);
     }
 }

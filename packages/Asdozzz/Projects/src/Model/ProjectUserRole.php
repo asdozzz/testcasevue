@@ -7,8 +7,12 @@ use DB;
 
 class ProjectUserRole extends \Asdozzz\Universal\Model\Universal
 {
-	protected $table = 'project_user';
-  	protected $essenceName = 'ProjectUserRole';
-  	protected $datasourceName = '\Asdozzz\Projects\Datasource\ProjectUserRole';
+    const AUTHOR = 1;
+    const EXECUTOR = 2;
+    const QA = 3;
+    const OBSERVER = 4;
+
   	protected $softDeletes = false;
+
+
 }

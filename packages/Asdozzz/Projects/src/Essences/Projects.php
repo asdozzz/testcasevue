@@ -6,7 +6,7 @@ use DB;
 
 class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $primary_key   = 'id';
+    public $moduleName    = 'Projects';
     public $table         = 'projects';
     public $label         = 'Проекты';
     public $softDeletes   = true;
@@ -16,10 +16,12 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
     {
         return array(
             //'listing' => 'listing.'.$this->table,
-            //'read'    => 'read.'.$this->table,
-            //'create'  => 'create.'.$this->table,
-            //'update'  => 'update.'.$this->table,
-            //'delete'  => 'delete.'.$this->table
+            'view'    => $this->table.'.view',
+            'read'    => $this->table.'.read',
+            'create'  => $this->table.'.create',
+            'update'  => $this->table.'.edit',
+            'delete'  => $this->table.'.remove',
+            'users'   => $this->table.'.users',
         );
     }
 

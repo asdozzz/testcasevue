@@ -190,6 +190,8 @@ return [
         Asdozzz\Vika\VikaServiceProvider::class,
 
         Asdozzz\Projects\ProjectsServiceProvider::class,
+        Asdozzz\Users\UsersServiceProvider::class,
+        Asdozzz\Tasks\TasksServiceProvider::class
     ],
 
     /*

@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException as HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -13,7 +14,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        '\Exception'
+        //'\Exception'
     ];
 
     /**
@@ -36,11 +37,22 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        if ($exception instanceof \Exception) {
-            return 'asd2';
+        parent::report($exception);
+    }
+
+    protected function getStatusCode(\Exception $e)
+    {
+        if ($e instanceof HttpException)
+        {
+            return $e->getStatusCode();
         }
 
-        parent::report($exception);
+        if ($e instanceof \Illuminate\Auth\AuthenticationException)
+        {
+            return 401;
+        }
+
+        return $e->getCode();
     }
 
     /**
@@ -52,8 +64,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof \Exception) {
-            return response()->json($exception->getMessage(), 500);
+        $statusCode = $this->getStatusCode($exception);
+
+        if ($request->wantsJson())
+        {
+            return response()->json(['message' => $exception->getMessage()], $statusCode);
+        }
+
+        if (config('app.debug'))
+        {
+            return parent::render($request, $exception);
         }
 
         return parent::render($request, $exception);

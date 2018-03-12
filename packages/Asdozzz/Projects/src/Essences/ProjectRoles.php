@@ -12,6 +12,7 @@ use DB;
 
 class ProjectRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
+    public $moduleName    = 'Projects';
     public $primary_key   = 'id';
     public $table         = 'project_roles';
     public $label         = 'Роли(Группы) проектов';

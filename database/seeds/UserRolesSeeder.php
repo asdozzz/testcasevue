@@ -14,10 +14,5 @@ class UserRolesSeeder extends Seeder
     {
 
 
-     /*   \HttpOz\Roles\Models\Role::create([
-            'name' => 'Forum Moderator',
-            'slug' => 'forum.moderator',
-        ]);*/
-
     }
 }

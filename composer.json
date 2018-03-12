@@ -13,13 +13,7 @@
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
-        "ytake/laravel-smarty": "^2.2",
-        "asdozzz/essence": "dev-master",
-        "asdozzz/filemakers": "dev-master",
-        "asdozzz/library": "dev-master",
-        "asdozzz/traits": "dev-master",
-        "asdozzz/universal": "dev-master",
-        "asdozzz/vika": "dev-master"
+        "ytake/laravel-smarty": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
@@ -35,7 +29,14 @@
         "psr-4": {
             "App\\": "app/",
             "Asdozzz\\Users\\":"packages/Asdozzz/Users/src",
-            "Asdozzz\\Projects\\":"packages/Asdozzz/Projects/src"
+            "Asdozzz\\Projects\\":"packages/Asdozzz/Projects/src",
+            "Asdozzz\\Tasks\\":"packages/Asdozzz/Tasks/src",
+            "Asdozzz\\Essence\\":"packages/Asdozzz/essence/src",
+            "Asdozzz\\Filemakers\\":"packages/Asdozzz/filemakers/src",
+            "Asdozzz\\Library\\":"packages/Asdozzz/library/src",
+            "Asdozzz\\Traits\\":"packages/Asdozzz/traits/src",
+            "Asdozzz\\Universal\\":"packages/Asdozzz/universal/src",
+            "Asdozzz\\Vika\\":"packages/Asdozzz/vika/src"
         }
     },
     "autoload-dev": {

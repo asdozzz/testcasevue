@@ -7,9 +7,6 @@ use DB;
 
 class Requirements extends \Asdozzz\Universal\Model\Universal
 {
-	protected $table = 'requirements';
-  	protected $essenceName = 'Requirements';
-  	protected $datasourceName = '\Asdozzz\Projects\Datasource\Requirements';
   	protected $softDeletes = false;
 
     public function sort($input)
@@ -24,7 +21,4 @@ class Requirements extends \Asdozzz\Universal\Model\Universal
         return ['success' => true, 'result' => true];
     }
 
-    public function create($input = array())
-    {
-    }
 }

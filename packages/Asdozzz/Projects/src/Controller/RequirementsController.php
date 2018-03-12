@@ -4,8 +4,6 @@ namespace Asdozzz\Projects\Controller;
 
 class RequirementsController extends \Asdozzz\Universal\Controller\UniversalController
 {
-	public $businessName = '\Asdozzz\Projects\Business\Requirements';
-
     function sort()
     {
         $input = \Request::all();

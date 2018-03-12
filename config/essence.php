@@ -59,7 +59,19 @@ return [
 	    'Projects' => Asdozzz\Projects\Essences\Projects::class,
         'ProjectRoles' => Asdozzz\Projects\Essences\ProjectRoles::class,
         'ProjectUserRole' => Asdozzz\Projects\Essences\ProjectUserRole::class,
+        'ProjectPermissions' => Asdozzz\Projects\Essences\ProjectPermissions::class,
+        'ProjectRolePermission' => Asdozzz\Projects\Essences\ProjectRolePermission::class,
         'Requirements' => Asdozzz\Projects\Essences\Requirements::class,
-        'Plans' => Asdozzz\Projects\Essences\Plans::class
+        'Plans' => Asdozzz\Projects\Essences\Plans::class,
+
+        'Tasks' => Asdozzz\Tasks\Essences\Tasks::class,
+        'Priorities' => Asdozzz\Tasks\Essences\Priorities::class,
+        'Statuses' => Asdozzz\Tasks\Essences\Statuses::class,
+        'Trackers' => Asdozzz\Tasks\Essences\Trackers::class,
+
+        'TaskRoles' => Asdozzz\Tasks\Essences\TaskRoles::class,
+        'TaskUserRole' => Asdozzz\Tasks\Essences\TaskUserRole::class,
+        'TaskPermission' => Asdozzz\Tasks\Essences\TaskPermission::class,
+        'TaskRolePermission' => Asdozzz\Tasks\Essences\TaskRolePermission::class,
     ]
 ];
