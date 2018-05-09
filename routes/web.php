@@ -10,11 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/helper/templates', 'Helper\Templates@all');
 
 Route::get('/', function () {
+   return view('welcome');
+})->name('home');
 
-    $class = new \Asdozzz\Projects\Controller\ProjectsController();
-    die("<pre>" . print_r($class, true) . "</pre>");
-
-    return $str;
+Route::get('/projects', function () {
+    return redirect()->route('home');
 });
+
+
+
