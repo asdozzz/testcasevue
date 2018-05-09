@@ -10,11 +10,11 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
-        "vee-validate": "^2.0.0-rc.19",
-        "vue": "^2.5.2",
+        "vee-validate": "^2.0.9",
+        "vue": "^2.5.16",
         "vue-router": "^2.8.1",
-        "vue-toasted": "^1.1.21",
-        "vue-wysiwyg": "^1.2.7",
+        "vue-toasted": "^1.1.24",
+        "vue-wysiwyg": "^1.7.0",
         "vue2-animate": "^1.0.4",
         "vuetify": "^0.15.7",
         "vuex": "^2.5.0",
@@ -23,16 +23,16 @@
     "devDependencies": {
         "axios": "^0.16.2",
         "bootstrap-sass": "^3.3.7",
-        "cross-env": "^5.0.1",
-        "jquery": "^3.1.1",
-        "laravel-mix": "^1.0",
-        "lodash": "^4.17.4",
+        "cross-env": "^5.1.4",
+        "css-loader": "^0.28.11",
+        "jquery": "^3.3.1",
+        "laravel-mix": "^1.7.2",
+        "lodash": "^4.17.10",
+        "node-sass": "^4.9.0",
         "style-loader": "^0.18.2",
         "url-loader": "^0.5.8",
         "vue-loader": "^12.2.2",
-        "vue-style-loader": "^3.0.3",
-        "vue-template-compiler": "^2.5.2",
-        "css-loader": "^0.28.7",
-        "node-sass": "^4.5.3"
+        "vue-style-loader": "^3.1.2",
+        "vue-template-compiler": "^2.5.16"
     }
 }
