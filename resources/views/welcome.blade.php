@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://vika/helper/dist/bundle.js"></script>
+    <script src="http://vika/helper/dist/bundle.js"></script>
 </head>
 <body>
     <div id="app">
