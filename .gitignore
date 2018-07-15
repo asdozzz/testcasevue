@@ -13,5 +13,6 @@ yarn-error.log
 /.phpstorm.meta.php
 /composer.lock
 /_ide_helper.php
+/package-lock.json
 
 /public/helper/node_modules
