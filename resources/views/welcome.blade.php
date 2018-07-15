@@ -16,9 +16,8 @@
 </head>
 <body>
     <div id="app">
-        <start></start>
+       OK
     </div>
-<script src="/js/app.js"></script>
 <script src="/js/salestr.js"></script>
 </body>
 </html>
