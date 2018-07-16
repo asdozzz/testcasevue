@@ -7,5 +7,5 @@
  */
 Route::middleware(['helper'])->group(function () {
 
-    Route::get('/helper/templates', 'Helper\Templates@all');
+    //Route::get('/helper/templates', 'Helper\Templates@all');
 });
