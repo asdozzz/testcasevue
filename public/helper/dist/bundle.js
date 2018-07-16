@@ -18014,7 +18014,7 @@ var Salestr = function (options) {
 
     helper.SalestrText = SalestrText;
 
-    helper.baseUrl = 'http://vika/';
+    helper.baseUrl = 'http://salestr.ru/';
     helper.templates = {};
     helper.compiles = {};
     helper.scaner = {};
