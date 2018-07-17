@@ -68,8 +68,9 @@ var handlers = function(parentContext)
         'accept-form':function(el)
         {
             var num = $(el).data('num');
-
+            console.log('accept-form-num',num);
             var items = parentContext.data.items;
+            console.log('accept-form-items',items);
 
             for (var i = 0; i < items.length; i++)
             {
