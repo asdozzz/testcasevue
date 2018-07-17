@@ -4,15 +4,53 @@ namespace Asdozzz\Tasks\Essences;
 
 use DB;
 
+/**
+ * Class Tasks
+ *
+ * @package Asdozzz\Tasks\Essences
+ */
 class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Tasks';
+    /**
+     * @var string
+     */
+    public $moduleName = 'Tasks';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Tasks\\Business\\Tasks';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Tasks\\Model\\Tasks';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Tasks\\Datasource\\Tasks';
+    /**
+     * @var string
+     */
     public $primary_key   = 'id';
+    /**
+     * @var string
+     */
     public $table         = 'tasks';
+    /**
+     * @var string
+     */
     public $label         = 'Tasks';
+    /**
+     * @var bool
+     */
     public $softDeletes   = true;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -24,6 +62,9 @@ class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -111,6 +152,9 @@ class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
         );
     }
 
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -135,6 +179,9 @@ class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();

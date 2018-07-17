@@ -2,17 +2,53 @@
 
 namespace Asdozzz\Projects\Essences;
 
-use DB;
-
+/**
+ * Class Requirements
+ *
+ * @package Asdozzz\Projects\Essences
+ */
 class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Projects';
+    /**
+     * @var string
+     */
+    public $moduleName = 'Projects';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Projects\\Business\\Requirements';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Projects\\Model\\Requirements';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Projects\\Datasource\\Requirements';
+    /**
+     * @var string
+     */
     public $primary_key   = 'id';
+    /**
+     * @var string
+     */
     public $table         = 'requirements';
+    /**
+     * @var string
+     */
     public $label         = 'Требования';
+    /**
+     * @var bool
+     */
     public $softDeletes   = true;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -24,6 +60,9 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -92,6 +131,9 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
         );
     }
 
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -129,6 +171,9 @@ class Requirements extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();

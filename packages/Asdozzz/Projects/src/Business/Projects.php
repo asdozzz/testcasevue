@@ -2,13 +2,32 @@
 
 namespace Asdozzz\Projects\Business;
 
+/**
+ * Class Projects
+ *
+ * @package Asdozzz\Projects\Business
+ */
 class Projects extends \Asdozzz\Universal\Business\Universal
 {
-    public function hasProjectPermission($project_id,$mark)
+    /**
+     * @var \Asdozzz\Projects\Model\Projects
+     */
+    protected $model;
+
+    /**
+     * @param $project_id
+     * @param $mark
+     * @return mixed
+     */
+    public function hasProjectPermission($project_id, $mark)
     {
         return $this->model->hasProjectPermission($project_id,$mark);
     }
 
+    /**
+     * @param $data
+     * @return mixed
+     */
     public function create($data)
     {
         $result = $this->model->create($data);
@@ -25,6 +44,10 @@ class Projects extends \Asdozzz\Universal\Business\Universal
         return $result;
     }
 
+    /**
+     * @param $input
+     * @return array
+     */
     public function getDatatable($input)
     {
         $ProjectUser = new \Asdozzz\Projects\Model\ProjectUserRole();
@@ -59,6 +82,10 @@ class Projects extends \Asdozzz\Universal\Business\Universal
         return $this->model->getDatatable($input);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function GetUsersById($id)
     {
         return $this->model->GetUsersById($id);

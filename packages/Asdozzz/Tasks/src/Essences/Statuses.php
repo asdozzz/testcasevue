@@ -2,17 +2,53 @@
 
 namespace Asdozzz\Tasks\Essences;
 
-use DB;
-
+/**
+ * Class Statuses
+ *
+ * @package Asdozzz\Tasks\Essences
+ */
 class Statuses extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Tasks';
+    /**
+     * @var string
+     */
+    public $moduleName = 'Tasks';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Tasks\\Business\\Statuses';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Tasks\\Model\\Statuses';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Tasks\\Datasource\\Statuses';
+    /**
+     * @var string
+     */
     public $primary_key   = 'id';
+    /**
+     * @var string
+     */
     public $table         = 'task_statuses';
+    /**
+     * @var string
+     */
     public $label         = 'Статусы задач';
+    /**
+     * @var bool
+     */
     public $softDeletes   = true;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -24,6 +60,9 @@ class Statuses extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -56,7 +95,9 @@ class Statuses extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         );
     }
 
-
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -83,6 +124,9 @@ class Statuses extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();
@@ -105,6 +149,9 @@ class Statuses extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getRelationships()
     {
         return [

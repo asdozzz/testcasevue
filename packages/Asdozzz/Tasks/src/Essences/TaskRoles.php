@@ -4,15 +4,53 @@ namespace Asdozzz\Tasks\Essences;
 
 use DB;
 
+/**
+ * Class TaskRoles
+ *
+ * @package Asdozzz\Tasks\Essences
+ */
 class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Tasks';
+    /**
+     * @var string
+     */
+    public $moduleName = 'Tasks';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Tasks\\Business\\TaskRoles';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Tasks\\Model\\TaskRoles';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Tasks\\Datasource\\TaskRoles';
+    /**
+     * @var string
+     */
     public $primary_key   = 'id';
+    /**
+     * @var string
+     */
     public $table         = 'task_roles';
+    /**
+     * @var string
+     */
     public $label         = 'Роли задачи';
+    /**
+     * @var bool
+     */
     public $softDeletes   = true;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -24,6 +62,9 @@ class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Es
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -57,7 +98,9 @@ class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Es
         );
     }
 
-
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -76,6 +119,9 @@ class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Es
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();
@@ -94,6 +140,9 @@ class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Es
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getRelationships()
     {
         return [];

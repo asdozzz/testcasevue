@@ -4,15 +4,53 @@ namespace Asdozzz\Projects\Essences;
 
 use DB;
 
+/**
+ * Class ProjectUserRole
+ *
+ * @package Asdozzz\Projects\Essences
+ */
 class ProjectUserRole extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Projects';
+    /**
+     * @var string
+     */
+    public $moduleName = 'Projects';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Projects\\Business\\ProjectUserRole';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Projects\\Model\\ProjectUserRole';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Projects\\Datasource\\ProjectUserRole';
+    /**
+     * @var string
+     */
     public $primary_key   = 'id';
+    /**
+     * @var string
+     */
     public $table         = 'project_user_role';
+    /**
+     * @var string
+     */
     public $label         = 'Пользователи проекта';
+    /**
+     * @var bool
+     */
     public $softDeletes   = false;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -24,6 +62,9 @@ class ProjectUserRole extends \Asdozzz\Essence\Essences\Essence implements \Asdo
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -52,6 +93,9 @@ class ProjectUserRole extends \Asdozzz\Essence\Essences\Essence implements \Asdo
         );
     }
 
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -80,6 +124,9 @@ class ProjectUserRole extends \Asdozzz\Essence\Essences\Essence implements \Asdo
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();

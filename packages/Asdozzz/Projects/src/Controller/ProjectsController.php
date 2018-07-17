@@ -2,8 +2,23 @@
 
 namespace Asdozzz\Projects\Controller;
 
+/**
+ * Class ProjectsController
+ *
+ * @package Asdozzz\Projects\Controller
+ */
 class ProjectsController extends \Asdozzz\Universal\Controller\UniversalController
 {
+    /**
+     * @var \Asdozzz\Projects\Business\Projects
+     */
+    protected $business;
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function GetUsersById($id)
     {
         if (empty($id))

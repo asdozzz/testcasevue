@@ -7,6 +7,18 @@ use DB;
 class Plans extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
     public $moduleName    = 'Projects';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Projects\\Business\\Plans';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Projects\\Model\\Plans';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Projects\\Datasource\\Plans';
     public $primary_key   = 'id';
     public $table         = 'plans';
     public $label         = 'Plans';
@@ -53,6 +65,27 @@ class Plans extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
                     /* Columns */
                 ],
             ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getDatatables()
+    {
+        $columns = $this->getColumns();
+
+        return [
+            'default' => [
+                'label'       => $this->label,
+                'table' => $this->table,
+                'primary_key' => $this->primary_key,
+                'columns'     => $columns,
+                'order' =>
+                    [
+                        [ 'column' => 'id', 'direction' => 'desc' ]
+                    ]
+            ]
         ];
     }
 }

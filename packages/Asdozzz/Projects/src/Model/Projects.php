@@ -5,11 +5,28 @@ namespace Asdozzz\Projects\Model;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
+/**
+ * Class Projects
+ *
+ * @package Asdozzz\Projects\Model
+ */
 class Projects extends \Asdozzz\Universal\Model\Universal
 {
-  	protected $softDeletes = false;
+    /**
+     * @var bool
+     */
+    protected $softDeletes = false;
+    /**
+     * @var \Asdozzz\Projects\Datasource\Projects
+     */
+    protected $datasource;
 
-    function hasProjectPermission($project_id,$key)
+    /**
+     * @param $project_id
+     * @param $key
+     * @return bool
+     */
+    function hasProjectPermission($project_id, $key)
     {
         $User = \Auth::user();
 
@@ -26,6 +43,10 @@ class Projects extends \Asdozzz\Universal\Model\Universal
         return true;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     function GetUsersById($id)
     {
         return $this->datasource->GetUsersById($id);

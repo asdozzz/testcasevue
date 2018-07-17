@@ -16,9 +16,7 @@ Route::get('/', function () {
    return view('welcome');
 })->name('home');
 
-Route::get('/projects', function () {
-    return redirect()->route('home');
-});
+Route::apiResource('projects', '\Asdozzz\Projects\Controller\ProjectsController');
 
 
 

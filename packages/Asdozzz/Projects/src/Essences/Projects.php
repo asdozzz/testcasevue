@@ -4,14 +4,49 @@ namespace Asdozzz\Projects\Essences;
 
 use DB;
 
+/**
+ * Class Projects
+ *
+ * @package Asdozzz\Projects\Essences
+ */
 class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
-    public $moduleName    = 'Projects';
+    /**
+     * @var string
+     */
+    public $moduleName     = 'Projects';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Projects\\Business\\Projects';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Projects\\Model\\Projects';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Projects\\Datasource\\Projects';
+    /**
+     * @var string
+     */
     public $table         = 'projects';
+    /**
+     * @var string
+     */
     public $label         = 'Проекты';
+    /**
+     * @var bool
+     */
     public $softDeletes   = true;
+    /**
+     * @var string
+     */
     public $deleted_field = 'deleted_at';
 
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         return array(
@@ -25,6 +60,9 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         );
     }
 
+    /**
+     * @return array
+     */
     public function getColumns()
     {
         return array(
@@ -64,7 +102,9 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         );
     }
 
-
+    /**
+     * @return array
+     */
     public function getForms()
     {
         $columns = $this->getColumns();
@@ -93,6 +133,9 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDatatables()
     {
         $columns = $this->getColumns();
@@ -116,6 +159,9 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getRelationships()
     {
         return [
