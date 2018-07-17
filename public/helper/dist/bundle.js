@@ -18222,7 +18222,7 @@ Salestr.prototype.addItems = function (items) {
             continue;
         }
 
-        item.id = Date.now();
+        item.id = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.uniqueId(item.name);
 
         helper.data.items.push(item);
     }

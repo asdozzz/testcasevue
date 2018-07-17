@@ -247,7 +247,7 @@ Salestr.prototype.addItems = function(items)
             continue;
         }
 
-        item.id = Date.now();
+        item.id = _.uniqueId(item.name);
 
         helper.data.items.push(item);
     }
