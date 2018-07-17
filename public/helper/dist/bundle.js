@@ -17978,8 +17978,13 @@ var handlers = function (parentContext) {
                         'accept-form': function (el) {
                                     var num = $(el).data('num');
 
-                                    if (parentContext.data.items[num] != undefined) {
-                                                parentContext.data.items[num]['form']();
+                                    var items = parentContext.data.items;
+
+                                    for (var i = 0; i < items.length; i++) {
+                                                if (items[i]['id'] + '' == num + '') {
+                                                            items[i]['form']();
+                                                            break;
+                                                }
                                     }
                         }
             };
@@ -18215,6 +18220,8 @@ Salestr.prototype.addItems = function (items) {
             errs.push(err);
             continue;
         }
+
+        item.id = Date.now();
 
         helper.data.items.push(item);
     }

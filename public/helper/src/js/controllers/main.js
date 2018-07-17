@@ -247,6 +247,8 @@ Salestr.prototype.addItems = function(items)
             continue;
         }
 
+        item.id = Date.now();
+
         helper.data.items.push(item);
     }
 

@@ -69,9 +69,15 @@ var handlers = function(parentContext)
         {
             var num = $(el).data('num');
 
-            if (parentContext.data.items[num] != undefined)
+            var items = parentContext.data.items;
+
+            for (var i = 0; i < items.length; i++)
             {
-                parentContext.data.items[num]['form']();
+                if (items[i]['id']+'' == num+'')
+                {
+                    items[i]['form']();
+                    break;
+                }
             }
         }
     }
