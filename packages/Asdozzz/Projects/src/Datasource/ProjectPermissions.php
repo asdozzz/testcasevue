@@ -4,9 +4,6 @@ namespace Asdozzz\Projects\Datasource;
 
 class ProjectPermissions extends \Asdozzz\Universal\Datasource\Universal
 {
-	public $primary_key = 'id';
-	public $table = 'project_permissions';
-
     static function getPermissionsByUserId($project_id,$id)
     {
         $res = \DB::table('project_role_permission AS pr')

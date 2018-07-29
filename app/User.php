@@ -6,12 +6,13 @@ use Laravel\Passport\HasApiTokens;
 use Asdozzz\Traits\UserModel\HasRole;
 use Asdozzz\Traits\UserModel\HasPermission;
 use Asdozzz\Projects\Traits\HasProjectPermission;
+use Asdozzz\Tasks\Traits\HasTaskPermission;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasRole,HasPermission, HasProjectPermission,Notifiable;
+    use HasApiTokens, HasRole,HasPermission, HasProjectPermission,HasTaskPermission,Notifiable;
 
     /**
      * The attributes that are mass assignable.

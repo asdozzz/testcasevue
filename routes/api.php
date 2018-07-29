@@ -20,6 +20,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     /*Tasks routes*/
     Route::apiResource('tasks', '\Asdozzz\Tasks\Controller\TasksController');
+    Route::post('tasks/{id}/changes', '\Asdozzz\Tasks\Controller\TasksController@GetChangesById');
 
     Route::apiResource('tasks_statuses', '\Asdozzz\Tasks\Controller\StatusesController');
     Route::post('tasks_statuses/all', '\Asdozzz\Tasks\Controller\StatusesController@all');
@@ -29,4 +30,6 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::apiResource('tasks_trackers', '\Asdozzz\Tasks\Controller\TrackersController');
     Route::post('tasks_trackers/all', '\Asdozzz\Tasks\Controller\TrackersController@all');
+
+    Route::apiResource('tasks_comments', '\Asdozzz\Tasks\Controller\TaskChangesController');
 });
