@@ -13,7 +13,7 @@ Route::middleware(['auth:api'])->group(function () {
     /*Projects routes*/
     Route::apiResource('projects', '\Asdozzz\Projects\Controller\ProjectsController');
     Route::post('projects/all', '\Asdozzz\Projects\Controller\ProjectsController@all');
-    Route::post('projects/{id}/users', '\Asdozzz\Projects\Controller\ProjectsController@GetUsersById');
+    Route::get('projects/{id}/users', '\Asdozzz\Projects\Controller\ProjectsController@GetUsersById');
 
     Route::apiResource('requirements', '\Asdozzz\Projects\Controller\RequirementsController');
     Route::post('requirements/sort', '\Asdozzz\Projects\Controller\RequirementsController@sort');
@@ -21,6 +21,7 @@ Route::middleware(['auth:api'])->group(function () {
     /*Tasks routes*/
     Route::apiResource('tasks', '\Asdozzz\Tasks\Controller\TasksController');
     Route::post('tasks/{id}/changes', '\Asdozzz\Tasks\Controller\TasksController@GetChangesById');
+    Route::get('tasks/{id}/users', '\Asdozzz\Tasks\Controller\TasksController@GetUsersById');
 
     Route::apiResource('tasks_statuses', '\Asdozzz\Tasks\Controller\StatusesController');
     Route::post('tasks_statuses/all', '\Asdozzz\Tasks\Controller\StatusesController@all');

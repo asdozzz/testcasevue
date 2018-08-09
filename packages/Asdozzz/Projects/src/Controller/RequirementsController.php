@@ -20,6 +20,6 @@ class RequirementsController extends \Asdozzz\Universal\Controller\UniversalCont
             throw new \Exception(\Lang::get('vika.exceptions.other'));
         }
 
-        return \Response::json($result);
+        return \Response::json(['success' => true, 'result' => $result]);
     }
 }

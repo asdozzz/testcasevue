@@ -56,6 +56,8 @@ return [
         'Textarea' => Asdozzz\Essence\Columns\Textarea::class,
 	],
 	'essences' => [
+	    'Users' => Asdozzz\Users\Essences\Users::class,
+
 	    'Projects' => Asdozzz\Projects\Essences\Projects::class,
         'ProjectRoles' => Asdozzz\Projects\Essences\ProjectRoles::class,
         'ProjectUserRole' => Asdozzz\Projects\Essences\ProjectUserRole::class,

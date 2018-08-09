@@ -4,5 +4,10 @@ namespace Asdozzz\Tasks\Business;
 
 class TaskRoles extends \Asdozzz\Universal\Business\Universal
 {
-	public $modelName = '\Asdozzz\Tasks\Model\TaskRoles';
+    public function getArraySlug()
+    {
+        return collect($this->getAll())->map(function($item){
+            return $item->slug;
+        });
+    }
 }

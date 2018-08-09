@@ -24,7 +24,6 @@ class TasksSeeder extends Seeder
                 'tracker'     => 1,
                 'priority'    => 1,
                 'user_id'     => $user_id,
-                'executor'    => $user_id,
             ];
 
             $id   = DB::table('tasks')->insertGetId($item);
@@ -33,6 +32,12 @@ class TasksSeeder extends Seeder
                 'task_id' => $id,
                 'user_id' => 1,
                 'role_id' => 1
+            ]);
+
+            DB::table('task_user_role')->insert([
+                'task_id' => $id,
+                'user_id' => 1,
+                'role_id' => 2
             ]);
         }
     }

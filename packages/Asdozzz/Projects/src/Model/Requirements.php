@@ -18,7 +18,7 @@ class Requirements extends \Asdozzz\Universal\Model\Universal
 
         $result = $this->datasource->sort($input['data']);
 
-        return ['success' => true, 'result' => true];
+        return $result;
     }
 
 }

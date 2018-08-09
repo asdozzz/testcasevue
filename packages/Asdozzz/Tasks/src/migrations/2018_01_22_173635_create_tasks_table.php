@@ -12,7 +12,6 @@ class CreateTasksTable extends Migration
             project_id INT(10),
             status INT(10),
             user_id INT(10),
-            executor INT(10),
             tracker INT(10),
             priority INT(10),
             subject TEXT(5000),

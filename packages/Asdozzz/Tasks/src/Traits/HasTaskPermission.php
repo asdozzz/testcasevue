@@ -1,15 +1,16 @@
 <?php
-
-namespace Asdozzz\Tasks\Traits;
 /**
  * Created by PhpStorm.
  * User: asd
  * Date: 29.07.2018
  * Time: 14:45
  */
+namespace Asdozzz\Tasks\Traits;
+
 trait HasTaskPermission
 {
     protected $users_permissions = array();
+
     function hasTaskPermission($task_id,$mark)
     {
         if (empty($this->users_permissions[$this->id][$task_id]))

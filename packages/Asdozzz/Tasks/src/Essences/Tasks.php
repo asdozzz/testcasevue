@@ -98,20 +98,6 @@ class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
                     ]
                 ]
             ),
-            'executor' => \Columns::factory('Integer')->extend(
-                [
-                    'name' => 'Исполнитель',
-                    'data' => 'executor',
-                    'default_value' => [
-                        'type' => 'function',
-                        'value' => function($data)
-                        {
-                            $User = \Auth::user();
-                            return $User->id;
-                        }
-                    ]
-                ]
-            ),
             'tracker' => \Columns::factory('Integer')->extend(
                 [
                     'name' => 'Трекер',
@@ -163,18 +149,12 @@ class Tasks extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essenc
             'create' =>
             [
                 'label'   => 'Add',
-                'columns' => [
-                    /* Columns */
-                ],
+                'columns' => $columns,
             ],
             'edit' =>
             [
                 'label'   => 'Edit',
-                'columns' =>
-                [
-                    $columns['id'],
-                    /* Columns */
-                ],
+                'columns' => $columns
             ],
         ];
     }

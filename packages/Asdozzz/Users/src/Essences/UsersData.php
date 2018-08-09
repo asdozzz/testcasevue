@@ -6,6 +6,20 @@ use DB;
 
 class UsersData extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
+    public $moduleName    = 'Users';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Users\\Business\\UsersData';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Users\\Model\\UsersData';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Users\\Datasource\\UsersData';
+
     public $primary_key   = 'id';
     public $table         = 'users_data';
     public $label         = 'Доп. данные пользователей';

@@ -42,7 +42,7 @@ class TaskRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Es
     /**
      * @var bool
      */
-    public $softDeletes   = true;
+    public $softDeletes   = false;
     /**
      * @var string
      */

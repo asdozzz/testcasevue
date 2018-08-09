@@ -7,7 +7,16 @@ use DB;
 
 class Users extends \Asdozzz\Universal\Model\Universal
 {
-  	protected $essenceName = '\Asdozzz\Users\Essences\Users';
-  	protected $datasourceName = '\Asdozzz\Users\Datasource\Users';
   	protected $softDeletes = true;
+
+    function getByIds($ids)
+    {
+        $filter = [
+            ['id','in',$ids]
+        ];
+
+        $res = $this->datasource->getByArray($filter);
+
+        return $res;
+    }
 }

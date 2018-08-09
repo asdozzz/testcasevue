@@ -12,7 +12,7 @@ class Projects extends \Asdozzz\Universal\Business\Universal
     /**
      * @var \Asdozzz\Projects\Model\Projects
      */
-    protected $model;
+    public $model;
 
     /**
      * @param $project_id
@@ -50,20 +50,7 @@ class Projects extends \Asdozzz\Universal\Business\Universal
      */
     public function getDatatable($input)
     {
-        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUserRole();
-        $list = $ProjectUser->getList([
-            'filter' => [
-                [
-                    'colname' => 'user_id',
-                    'operator' => '=',
-                    'value' => \Request::user()->id
-                ]
-            ]
-        ]);
-
-        $projectIds = $list->map(function ($item) {
-            return $item->project_id;
-        });
+        $projectIds = $this->getAvailableProjects();
 
         if (empty($projectIds))
         {
@@ -82,6 +69,24 @@ class Projects extends \Asdozzz\Universal\Business\Universal
         return $this->model->getDatatable($input);
     }
 
+    public function getAll($input = array())
+    {
+        $projectIds = $this->getAvailableProjects();
+
+        if (empty($projectIds))
+        {
+            return [];
+        }
+
+        $input['filter'][] = [
+            'colname' => 'id',
+            'operator' => 'in',
+            'value' => $projectIds
+        ];
+
+        return $this->model->getAll($input);
+    }
+
     /**
      * @param $id
      * @return mixed
@@ -89,5 +94,28 @@ class Projects extends \Asdozzz\Universal\Business\Universal
     public function GetUsersById($id)
     {
         return $this->model->GetUsersById($id);
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getAvailableProjects()
+    {
+        $ProjectUser = new \Asdozzz\Projects\Model\ProjectUserRole();
+        $list        = $ProjectUser->getList([
+            'filter' => [
+                [
+                    'colname'  => 'user_id',
+                    'operator' => '=',
+                    'value'    => \Request::user()->id
+                ]
+            ]
+        ]);
+        $projectIds = $list->map(function ($item)
+        {
+            return $item->project_id;
+        });
+
+        return $projectIds;
     }
 }

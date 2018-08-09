@@ -12,6 +12,20 @@ use DB;
 
 class Roles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
+    public $moduleName    = 'Users';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Users\\Business\\Roles';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Users\\Model\\Roles';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Users\\Datasource\\Roles';
+
     public $primary_key   = 'id';
     public $table         = 'roles';
     public $label         = 'Роли(Группы) пользователей';

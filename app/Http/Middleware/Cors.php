@@ -18,7 +18,7 @@ class Cors
         if ($request->isMethod('options')) {
             return response('', 200)
                 ->header('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS, PUT')
-                ->header('Access-Control-Allow-Headers', 'accept, content-type, x-xsrf-token, x-csrf-token');
+                ->header('Access-Control-Allow-Headers', 'accept,authorization, content-type, x-xsrf-token, x-csrf-token');
         }
 
         return $next($request);

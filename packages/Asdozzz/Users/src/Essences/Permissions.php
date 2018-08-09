@@ -12,6 +12,20 @@ use DB;
 
 class Permissions extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Essence\Interfaces\iEssence
 {
+    public $moduleName    = 'Users';
+    /**
+     * @var string
+     */
+    public $businessName   = 'Asdozzz\\Users\\Business\\Permissions';
+    /**
+     * @var string
+     */
+    public $modelName      = 'Asdozzz\\Users\\Model\\Permissions';
+    /**
+     * @var string
+     */
+    public $datasourceName = 'Asdozzz\\Users\\Datasource\\Permissions';
+
     public $primary_key   = 'id';
     public $table         = 'permissions';
     public $label         = 'Права пользователей';

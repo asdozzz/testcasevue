@@ -15,7 +15,6 @@ trait HasProjectPermission
         if (empty($this->users_permissions[$this->id][$project_id]))
         {
             $permissions = \Asdozzz\Projects\Datasource\ProjectPermissions::getPermissionsByUserId($project_id,$this->id);
-
             $this->users_permissions[$this->id][$project_id] = $permissions;
         }
         else
