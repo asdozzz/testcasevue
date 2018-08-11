@@ -146,18 +146,11 @@ class TaskChanges extends \Asdozzz\Universal\Model\Universal
 
         foreach ($task_roles as $role)
         {
-            $old_users = !empty($old->users[$role])?$old->users[$role]:[];
-            $new_users = !empty($new->users[$role])?$new->users[$role]:[];
+            $old_users = collect($old->users[$role]);
+            $new_users = collect($new->users[$role]);
 
-            $oldIds = empty($old_users)?[]:collect($old_users)->map(function ($item)
-            {
-                return $item->id;
-            })->toArray();
-
-            $newIds = empty($new_users)?[]:collect($new_users)->map(function ($item)
-            {
-                return $item->id;
-            })->toArray();
+            $oldIds = $old_users->pluck('id')->toArray();
+            $newIds = $new_users->pluck('id')->toArray();
 
             $res    = $this->isEqualArr($oldIds, $newIds);
 
@@ -165,22 +158,14 @@ class TaskChanges extends \Asdozzz\Universal\Model\Universal
             {
                 $label     = $this->getLabelByCode($role);
 
-
-                $oldNames = empty($old_users)?[]:collect($old_users)->map(function ($item)
-                {
-                    return $item->name;
-                })->toArray();
-
-                $newNames = empty($new_users)?[]:collect($new_users)->map(function ($item)
-                {
-                    return $item->name;
-                })->toArray();
+                $oldNames = $old_users->pluck('name')->toArray();
+                $newNames = $new_users->pluck('name')->toArray();
 
                 $prefix    = 'add_';
 
                 if (!empty($oldIds))
                 {
-                    $prefix    = 'update_';
+                    $prefix  = 'update_';
                 }
 
                 $changes[] = [

@@ -7,7 +7,7 @@ class CreateTaskChangesTable extends Migration
 {
     public function up()
     {
-        $sql = "CREATE TABLE task_changes (id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,user_id INT(10),task_id INT(10),created_at DATETIME,PRIMARY KEY (`id`)) COLLATE='utf8_general_ci' ENGINE=InnoDB";
+        $sql = "CREATE TABLE task_changes (id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,user_id INT(10),task_id INT(10),comment TEXT NULL,created_at DATETIME,PRIMARY KEY (`id`)) COLLATE='utf8_general_ci' ENGINE=InnoDB";
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
     }

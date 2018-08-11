@@ -78,6 +78,5 @@ return [
 
         'TaskChanges' => Asdozzz\Tasks\Essences\TaskChanges::class,
         'TaskChangesParams' => Asdozzz\Tasks\Essences\TaskChangesParams::class,
-        'TaskComments' => Asdozzz\Tasks\Essences\TaskComments::class,
     ]
 ];

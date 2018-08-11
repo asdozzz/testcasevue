@@ -20,8 +20,8 @@ Route::middleware(['auth:api'])->group(function () {
 
     /*Tasks routes*/
     Route::apiResource('tasks', '\Asdozzz\Tasks\Controller\TasksController');
-    Route::post('tasks/{id}/changes', '\Asdozzz\Tasks\Controller\TasksController@GetChangesById');
     Route::get('tasks/{id}/users', '\Asdozzz\Tasks\Controller\TasksController@GetUsersById');
+    Route::get('tasks/{id}/changes', '\Asdozzz\Tasks\Controller\TasksController@GetChangesById');
 
     Route::apiResource('tasks_statuses', '\Asdozzz\Tasks\Controller\StatusesController');
     Route::post('tasks_statuses/all', '\Asdozzz\Tasks\Controller\StatusesController@all');

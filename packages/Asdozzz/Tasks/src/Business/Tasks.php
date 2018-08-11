@@ -2,6 +2,11 @@
 
 namespace Asdozzz\Tasks\Business;
 
+/**
+ * Class Tasks
+ *
+ * @package Asdozzz\Tasks\Business
+ */
 class Tasks extends \Asdozzz\Universal\Business\Universal
 {
     /**
@@ -9,14 +14,24 @@ class Tasks extends \Asdozzz\Universal\Business\Universal
      */
     public $model;
 
+    /**
+     * @param $project_id
+     * @param $mark
+     * @return bool
+     */
     public function hasTaskPermission($project_id, $mark)
     {
         return $this->model->hasTaskPermission($project_id,$mark);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function GetChangesById($id)
     {
-        return $this->model->GetChangesById($id);
+        $TaskChangesBusiness = new \Asdozzz\Tasks\Business\TaskChanges();
+        return $TaskChangesBusiness->GetChangesByTaskId($id);
     }
 
     /**

@@ -17,7 +17,7 @@ class TaskChangesParams extends \Asdozzz\Essence\Essences\Essence implements \As
     public $primary_key   = 'id';
     public $table         = 'task_changes_params';
     public $label         = 'TaskChangesParams';
-    public $softDeletes   = true;
+    public $softDeletes   = false;
     public $deleted_field = 'deleted_at';
 
     public function getPermissions()

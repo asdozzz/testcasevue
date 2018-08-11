@@ -42,15 +42,6 @@ class Tasks extends Universal
         return true;
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    function GetChangesById($id)
-    {
-        return $this->datasource->GetChangesById($id);
-    }
-
 
     public function read($data)
     {

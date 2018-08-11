@@ -17,7 +17,7 @@ class TaskChanges extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
     public $primary_key   = 'id';
     public $table         = 'task_changes';
     public $label         = 'TaskChanges';
-    public $softDeletes   = true;
+    public $softDeletes   = false;
     public $deleted_field = 'deleted_at';
 
     public function getPermissions()
@@ -54,6 +54,13 @@ class TaskChanges extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
                     'name' => 'Задача',
                     'data' => 'task_id',
                     'required' => true
+                ]
+            ),
+            'comment' => \Columns::factory('Text')->extend(
+                [
+                    'name' => 'Комментарий',
+                    'data' => 'comment',
+                    'required' => false
                 ]
             ),
             'created_at' => \Columns::factory('Created_at')->get(),
@@ -104,8 +111,7 @@ class TaskChanges extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\
     public function getRelationships()
     {
         return [
-            \Asdozzz\Essence\Relationship::factory('OneToMany',['TaskChnagesParams','change_id']),
-            \Asdozzz\Essence\Relationship::factory('OneToMany',['TaskComments','change_id']),
+            \Asdozzz\Essence\Relationship::factory('OneToMany',['TaskChnagesParams','change_id'])
         ];
     }
 }
