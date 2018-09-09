@@ -33,4 +33,6 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('tasks_trackers/all', '\Asdozzz\Tasks\Controller\TrackersController@all');
 
     Route::apiResource('tasks_comments', '\Asdozzz\Tasks\Controller\TaskChangesController');
+
+    Route::apiResource('users', '\Asdozzz\Users\Controller\UsersController');
 });

@@ -4,8 +4,7 @@ namespace Asdozzz\Users\Controller;
 
 class UsersController extends \Asdozzz\Universal\Controller\UniversalController
 {
-	public $businessName = '\Asdozzz\Users\Business\Users';
-	public $moduleName = 'users';
+    protected $roles_business;
 
     public function __construct()
     {
