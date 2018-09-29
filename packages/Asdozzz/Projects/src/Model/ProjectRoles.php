@@ -7,5 +7,5 @@ use DB;
 
 class ProjectRoles extends \Asdozzz\Universal\Model\Universal
 {
-  	protected $softDeletes = false;
+
 }

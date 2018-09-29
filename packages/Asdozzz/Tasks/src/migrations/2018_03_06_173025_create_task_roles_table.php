@@ -18,27 +18,30 @@ class CreateTaskRolesTable extends Migration
         $pdo->exec($sql);
 
         DB::table('task_roles')->insert([
-            'id' => 1,
-            'name' => 'Author',
-            'slug' => 'author',
-        ]);
-
-        DB::table('task_roles')->insert([
-            'id' => 2,
-            'name' => 'executor',
-            'slug' => 'executor',
-        ]);
-
-        DB::table('task_roles')->insert([
-            'id' => 3,
-            'name' => 'QA',
-            'slug' => 'QA',
-        ]);
-
-        DB::table('task_roles')->insert([
-            'id' => 4,
-            'name' => 'observer',
-            'slug' => 'observer',
+            [
+                'name' => 'Автор',
+                'slug' => 'author',
+            ],
+            [
+                'name' => 'Наблюдатель',
+                'slug' => 'observer',
+            ],
+            [
+                'name' => 'Аналитик',
+                'slug' => 'analytic',
+            ],
+            [
+                'name' => 'Исполнитель',
+                'slug' => 'executor',
+            ],
+            [
+                'name' => 'Тестировщик',
+                'slug' => 'QA',
+            ],
+            [
+                'name' => 'Заказчик',
+                'slug' => 'customer',
+            ]
         ]);
     }
 

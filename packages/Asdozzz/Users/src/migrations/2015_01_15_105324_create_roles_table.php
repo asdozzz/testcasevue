@@ -20,6 +20,40 @@ class CreateRolesTable extends Migration
             $table->integer('level')->default(1);
             $table->timestamps();
         });
+
+
+        $insertRoles = [
+            [
+                'name' => 'Администратор',
+                'slug' => 'admin',
+            ],
+            [
+                'name' => 'Архитектор',
+                'slug' => 'architect',
+            ],
+            [
+                'name' => 'Аналитик',
+                'slug' => 'analytic',
+            ],
+            [
+                'name' => 'Дизайнер',
+                'slug' => 'designer',
+            ],
+            [
+                'name' => 'Разработчик',
+                'slug' => 'developer',
+            ],
+            [
+                'name' => 'Тестировщик',
+                'slug' => 'QA',
+            ],
+            [
+                'name' => 'Заказчик',
+                'slug' => 'customer',
+            ]
+        ];
+
+        DB::table('roles')->insert($insertRoles);
     }
 
     /**

@@ -10,6 +10,7 @@ namespace Asdozzz\Projects\Traits;
 trait HasProjectPermission
 {
     protected $users_permissions = array();
+
     function hasProjectPermission($project_id,$mark)
     {
         if (empty($this->users_permissions[$this->id][$project_id]))

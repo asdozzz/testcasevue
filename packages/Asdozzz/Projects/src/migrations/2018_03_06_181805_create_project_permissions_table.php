@@ -11,41 +11,118 @@ class CreateProjectPermissionsTable extends Migration
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
 
-        DB::table('project_permissions')->insert([
-            'id' => 1,
-            'name' => 'projects.edit',
-            'slug' => 'projects.edit',
-        ]);
+        $permissions = [
+            [
+                'name' => 'projects.edit',
+                'slug' => 'projects.edit',
+            ],
+            [
+                'name' => 'projects.read',
+                'slug' => 'projects.read',
+            ],
+            [
+                'name' => 'requirements.listing',
+                'slug' => 'requirements.listing',
+            ],
+            [
+                'name' => 'requirements.create',
+                'slug' => 'requirements.create',
+            ],
+            [
+                'name' => 'requirements.read',
+                'slug' => 'requirements.read',
+            ],
+            [
+                'name' => 'requirements.update',
+                'slug' => 'requirements.update',
+            ],
+            [
+                'name' => 'requirements.delete',
+                'slug' => 'requirements.delete',
+            ],
+            [
+                'name' => 'roles.listing',
+                'slug' => 'roles.listing',
+            ],
+            [
+                'name' => 'roles.create',
+                'slug' => 'roles.create',
+            ],
+            [
+                'name' => 'roles.read',
+                'slug' => 'roles.read',
+            ],
+            [
+                'name' => 'roles.update',
+                'slug' => 'roles.update',
+            ],
+            [
+                'name' => 'roles.delete',
+                'slug' => 'roles.delete',
+            ],
+            [
+                'name' => 'users.listing',
+                'slug' => 'users.listing',
+            ],
+            [
+                'name' => 'users.create',
+                'slug' => 'users.create',
+            ],
+            [
+                'name' => 'users.read',
+                'slug' => 'users.read',
+            ],
+            [
+                'name' => 'users.update',
+                'slug' => 'users.update',
+            ],
+            [
+                'name' => 'users.delete',
+                'slug' => 'users.delete',
+            ],
+            [
+                'name' => 'testcase.listing',
+                'slug' => 'testcase.listing',
+            ],
+            [
+                'name' => 'testcase.create',
+                'slug' => 'testcase.create',
+            ],
+            [
+                'name' => 'testcase.read',
+                'slug' => 'testcase.read',
+            ],
+            [
+                'name' => 'testcase.update',
+                'slug' => 'testcase.update',
+            ],
+            [
+                'name' => 'testcase.delete',
+                'slug' => 'testcase.delete',
+            ],
+            [
+                'name' => 'testplan.listing',
+                'slug' => 'testplan.listing',
+            ],
+            [
+                'name' => 'testplan.create',
+                'slug' => 'testplan.create',
+            ],
+            [
+                'name' => 'testplan.read',
+                'slug' => 'testplan.read',
+            ],
+            [
+                'name' => 'testplan.update',
+                'slug' => 'testplan.update',
+            ],
+            [
+                'name' => 'testplan.delete',
+                'slug' => 'testplan.delete',
+            ]
+        ];
 
-        DB::table('project_permissions')->insert([
-            'id' => 2,
-            'name' => 'projects.remove',
-            'slug' => 'projects.remove',
-        ]);
-
-        DB::table('project_permissions')->insert([
-            'id' => 3,
-            'name' => 'projects.view',
-            'slug' => 'projects.view',
-        ]);
-
-        DB::table('project_permissions')->insert([
-            'id' => 4,
-            'name' => 'projects.tasks.create',
-            'slug' => 'projects.tasks.create',
-        ]);
-
-        DB::table('project_permissions')->insert([
-            'id' => 5,
-            'name' => 'projects.requirements.create',
-            'slug' => 'projects.requirements.create',
-        ]);
-
-        DB::table('project_permissions')->insert([
-            'id' => 6,
-            'name' => 'projects.users',
-            'slug' => 'projects.users',
-        ]);
+        DB::table('project_permissions')->insert($permissions);
 
     }
 

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 Route::middleware(['auth:api'])->group(function () {
 
     Route::get('/user', function (Request $request) {
+        /** @var \App\User $user*/
         $user = $request->user();
+        $user->permissions = $user->getPermissions();
         return $user;
     });
 

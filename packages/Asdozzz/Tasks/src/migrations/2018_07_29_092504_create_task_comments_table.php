@@ -14,7 +14,7 @@ class CreateTaskCommentsTable extends Migration
 
     public function down()
     {
-        $sql = "DROP TABLE task_comments";
+        $sql = "DROP TABLE IF EXISTS task_comments";
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
     }

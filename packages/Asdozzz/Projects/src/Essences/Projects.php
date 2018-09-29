@@ -50,7 +50,7 @@ class Projects extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz\Ess
     public function getPermissions()
     {
         return array(
-            //'listing' => 'listing.'.$this->table,
+            'listing' => $this->table.'.listing',
             'view'    => $this->table.'.view',
             'read'    => $this->table.'.read',
             'create'  => $this->table.'.create',

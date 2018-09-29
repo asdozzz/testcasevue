@@ -11,41 +11,38 @@ class CreateTaskPermissionsTable extends Migration
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
 
-        DB::table('task_permissions')->insert([
-            'id' => 1,
-            'name' => 'tasks.edit',
-            'slug' => 'tasks.edit',
-        ]);
+        $insertPermissions = [
+            [
+                'name' => 'tasks.update',
+                'slug' => 'tasks.update',
+            ],
+            [
+                'name' => 'tasks.remove',
+                'slug' => 'tasks.remove',
+            ],
+            [
+                'name' => 'tasks.view',
+                'slug' => 'tasks.view',
+            ],
+            [
+                'name' => 'comments.create',
+                'slug' => 'comments.create',
+            ],
+            [
+                'name' => 'comments.update',
+                'slug' => 'comments.update',
+            ],
+            [
+                'name' => 'files.create',
+                'slug' => 'files.create',
+            ],
+            [
+                'name' => 'files.delete',
+                'slug' => 'files.delete',
+            ]
+        ];
 
-        DB::table('task_permissions')->insert([
-            'id' => 2,
-            'name' => 'tasks.remove',
-            'slug' => 'tasks.remove',
-        ]);
-
-        DB::table('task_permissions')->insert([
-            'id' => 3,
-            'name' => 'tasks.view',
-            'slug' => 'tasks.view',
-        ]);
-
-        DB::table('task_permissions')->insert([
-            'id' => 4,
-            'name' => 'tasks.comments.add',
-            'slug' => 'tasks.comments.add',
-        ]);
-
-        DB::table('task_permissions')->insert([
-            'id' => 5,
-            'name' => 'tasks.comments.edit',
-            'slug' => 'tasks.comments.edit',
-        ]);
-
-        DB::table('task_permissions')->insert([
-            'id' => 6,
-            'name' => 'tasks.files.add',
-            'slug' => 'tasks.files.add',
-        ]);
+        DB::table('task_permissions')->insert($insertPermissions);
     }
 
     public function down()

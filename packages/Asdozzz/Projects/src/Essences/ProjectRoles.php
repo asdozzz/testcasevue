@@ -71,6 +71,13 @@ class ProjectRoles extends \Asdozzz\Essence\Essences\Essence implements \Asdozzz
     {
         return array(
             'id' => \Columns::factory('PrimaryKey')->get(),
+            'project_id' => \Columns::factory('Integer')->extend(
+                [
+                    'name' => 'Проект',
+                    'data' => 'project_id',
+                    'required' => false
+                ]
+            ),
             'name' => \Columns::factory('Text')->extend(
                 [
                     'name' => 'Название',

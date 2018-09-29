@@ -11,35 +11,97 @@ class CreateTaskRolePermissionTable extends Migration
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
 
-        foreach (range(1,6) as $index) {
-            DB::table('task_role_permission')->insert([
-                'role_id' => 1,
-                'permission_id' => $index,
-            ]);
-        }
+        $permissions = DB::table('task_permissions')->get()->keyBy('slug');
+        $roles = DB::table('task_roles')->get()->keyBy('slug');
 
-        foreach (range(1,6) as $index) {
-            if ($index == 2) continue;
-            DB::table('task_role_permission')->insert([
-                'role_id' => 2,
-                'permission_id' => $index,
-            ]);
-        }
+        $this->setAuthorPermissions($permissions, $roles);
+        $this->setObserverPermissions($roles, $permissions);
+        $this->setAnalyticPermissions($roles, $permissions);
+        $this->setExecutorPermissions($roles, $permissions);
+        $this->setQAPermissions($roles, $permissions);
+        $this->setCustomerPermissions($roles, $permissions);
+    }
 
-        foreach (range(1,6) as $index) {
-            if ($index == 2) continue;
-            DB::table('task_role_permission')->insert([
-                'role_id' => 3,
-                'permission_id' => $index,
-            ]);
-        }
 
-        foreach (range(3,6) as $index) {
-            DB::table('task_role_permission')->insert([
-                'role_id' => 4,
-                'permission_id' => $index,
-            ]);
-        }
+    /**
+     * @param $permissions
+     * @param $roles
+     */
+    protected function setAuthorPermissions($permissions, $roles)
+    {
+        $this->addPermissionsForRole($roles, $permissions, collect($permissions)->pluck('slug'), 'author');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setObserverPermissions($roles, $permissions)
+    {
+        $this->addPermissionsForRole($roles, $permissions, ['tasks.view'], 'observer');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setAnalyticPermissions($roles, $permissions)
+    {
+        $this->addPermissionsForRole($roles, $permissions, collect($permissions)->pluck('slug'), 'analytic');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setExecutorPermissions($roles, $permissions)
+    {
+        $stack = [
+            'tasks.update',
+            'tasks.view',
+            'comments.create',
+            'comments.update',
+            'files.create',
+            'files.delete',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'executor');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setQAPermissions($roles, $permissions)
+    {
+        $stack = [
+            'tasks.update',
+            'tasks.view',
+            'comments.create',
+            'comments.update',
+            'files.create',
+            'files.delete',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'QA');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setCustomerPermissions($roles, $permissions)
+    {
+        $stack = [
+            'tasks.update',
+            'tasks.view',
+            'comments.create',
+            'comments.update',
+            'files.create',
+            'files.delete',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'customer');
     }
 
     public function down()
@@ -47,5 +109,24 @@ class CreateTaskRolePermissionTable extends Migration
         $sql = "DROP TABLE task_role_permission";
         $pdo = DB::connection()->getPdo();
         $pdo->exec($sql);
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     * @param $stack
+     * @param $slug
+     */
+    protected function addPermissionsForRole($roles, $permissions, $stack, $slug)
+    {
+        $insertData = array();
+        foreach ($stack as $perm)
+        {
+            $insertData[] = [
+                'role_id'       => $roles[$slug]->id,
+                'permission_id' => $permissions[$perm]->id
+            ];
+        }
+        DB::table('task_role_permission')->insert($insertData);
     }
 }

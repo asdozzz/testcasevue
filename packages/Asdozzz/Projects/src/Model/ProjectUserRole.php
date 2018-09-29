@@ -11,8 +11,4 @@ class ProjectUserRole extends \Asdozzz\Universal\Model\Universal
     const EXECUTOR = 2;
     const QA = 3;
     const OBSERVER = 4;
-
-  	protected $softDeletes = false;
-
-
 }

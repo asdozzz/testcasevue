@@ -24,6 +24,7 @@ class Projects extends \Asdozzz\Universal\Business\Universal
         return $this->model->hasProjectPermission($project_id,$mark);
     }
 
+
     /**
      * @param $data
      * @return mixed

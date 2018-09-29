@@ -24,10 +24,12 @@ class ProjectsSeeder extends Seeder
 
             $id   = DB::table('projects')->insertGetId($item);
 
+            $roles = DB::table('project_roles')->get()->keyBy('slug');
+
             DB::table('project_user_role')->insert([
                 'project_id' => $id,
                 'user_id' => 1,
-                'role_id' => 1
+                'role_id' => $roles['admin']->id
             ]);
         }
     }

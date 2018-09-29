@@ -21,80 +21,16 @@ class CreatePermissionUserTable extends Migration
             $table->timestamps();
         });
 
-        $adminPanelPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'Admin panel',
-            'slug' => 'admin.panel',
-            'description' => '', // optional
-        ]);
+        $permissions = DB::table('permissions')->get()->keyBy('slug');
+        $roles = DB::table('roles')->get()->keyBy('slug');
 
-        $createUsersPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'Create users',
-            'slug' => 'create.users',
-            'description' => '', // optional
-        ]);
-
-        $deleteUsersPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'Delete users',
-            'slug' => 'delete.users',
-        ]);
-
-        $readUsersPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'read users',
-            'slug' => 'read.users',
-        ]);
-
-        $updateUsersPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'update users',
-            'slug' => 'update.users',
-        ]);
-
-        $listingUsersPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'listing users',
-            'slug' => 'listing.users',
-        ]);
-
-        $adminRole = DB::table('roles')->insertGetId([
-            'name' => 'Admin',
-            'slug' => 'admin',
-            'description' => 'Custodians of the system.', // optional
-        ]);
-
-        $clientRole = DB::table('roles')->insertGetId([
-            'name' => 'Client',
-            'slug' => 'client',
-            'description' => '', // optional
-        ]);
-
-        $createProjectPermission =  DB::table('permissions')->insertGetId([
-            'name' => 'Create projects',
-            'slug' => 'create.projects',
-            'description' => '', // optional
-        ]);
-
-        $ins_data = [
-            ['role_id' => $adminRole, 'permission_id' => $adminPanelPermission],
-            ['role_id' => $adminRole, 'permission_id' => $createUsersPermission],
-            ['role_id' => $adminRole, 'permission_id' => $deleteUsersPermission],
-            ['role_id' => $adminRole, 'permission_id' => $readUsersPermission],
-            ['role_id' => $adminRole, 'permission_id' => $updateUsersPermission],
-            ['role_id' => $adminRole, 'permission_id' => $listingUsersPermission],
-            ['role_id' => $adminRole, 'permission_id' => $createProjectPermission],
-            ['role_id' => $clientRole, 'permission_id' => $createProjectPermission],
-        ];
-
-        DB::table('permission_role')->insert($ins_data);
-
-        $moderatorRole = DB::table('roles')->insertGetId([
-            'name' => 'Moderator',
-            'slug' => 'moderator',
-            'description' => 'Custodians of the system.', // optional
-        ]);
-
-        $guestRole = DB::table('roles')->insertGetId([
-            'name' => 'Guest',
-            'slug' => 'guest',
-            'description' => '', // optional
-        ]);
+        $this->setAdminPermissions($permissions, $roles);
+        $this->setArchitectPermissions($roles, $permissions);
+        $this->setAnalyticPermissions($roles, $permissions);
+        $this->setDesignerPermissions($roles, $permissions);
+        $this->setDeveloperPermissions($roles, $permissions);
+        $this->setQAPermissions($roles, $permissions);
+        $this->setCustomerPermissions($roles, $permissions);
 
         $firstId = DB::table('users')->insertGetId([
             'name' => 'leo',
@@ -104,8 +40,27 @@ class CreatePermissionUserTable extends Migration
 
         DB::table('role_user')->insertGetId([
             'user_id' => $firstId,
-            'role_id' => $adminRole
+            'role_id' => $roles['admin']->id
         ]);
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     * @param $stack
+     * @param $slug
+     */
+    protected function addPermissionsForRole($roles, $permissions, $stack, $slug)
+    {
+        $insertData = array();
+        foreach ($stack as $perm)
+        {
+            $insertData[] = [
+                'role_id'       => $roles[$slug]->id,
+                'permission_id' => $permissions[$perm]->id
+            ];
+        }
+        DB::table('permission_role')->insert($insertData);
     }
 
     /**
@@ -116,5 +71,100 @@ class CreatePermissionUserTable extends Migration
     public function down()
     {
         Schema::drop('permission_user');
+    }
+
+    /**
+     * @param $permissions
+     * @param $roles
+     */
+    protected function setAdminPermissions($permissions, $roles)
+    {
+        $this->addPermissionsForRole($roles, $permissions, collect($permissions)->pluck('slug'), 'admin');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setArchitectPermissions($roles, $permissions)
+    {
+        $stack= [
+            'projects.listing',
+            'tasks.listing',
+            'tasks.create',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'architect');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setAnalyticPermissions($roles, $permissions)
+    {
+        $stack= [
+            'projects.listing',
+            'tasks.listing',
+            'tasks.create',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'analytic');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setDesignerPermissions($roles, $permissions)
+    {
+        $stack= [
+            'projects.listing',
+            'tasks.listing',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'designer');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setDeveloperPermissions($roles, $permissions)
+    {
+        $stack = [
+            'projects.listing',
+            'tasks.listing',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'developer');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setQAPermissions($roles, $permissions)
+    {
+        $stack = [
+            'projects.listing',
+            'tasks.listing',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'QA');
+    }
+
+    /**
+     * @param $roles
+     * @param $permissions
+     */
+    protected function setCustomerPermissions($roles, $permissions)
+    {
+        $stack = [
+            'projects.listing',
+            'tasks.listing',
+        ];
+
+        $this->addPermissionsForRole($roles, $permissions, $stack, 'customer');
     }
 }
